@@ -141,3 +141,10 @@ function buyWeapon() {}
 function fightSlime() {}
 
 function fightBeast() {}
+
+function fightSlime() {
+  fighting = 0;
+  goFight();
+}
+
+function goFight() {}
