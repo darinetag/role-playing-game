@@ -158,9 +158,19 @@ function goFight() {
   update(locations[3]);
   monsterHealth = monsters[fighting].health;
   monsterStats.style.display = "block";
-
+  monsterName.innerText = monsters[fighting].name;
+  monsterHealthText.innerText = monsters[fighting].health;
 }
 
-function attack() {}
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText +=
+    " You attack it with your " + weapons[currentWeapon].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -=
+    weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+}
 
 function dodge() {}
