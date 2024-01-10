@@ -22,7 +22,7 @@ const weapons = [
   { name: "claw hammer", power: 50 },
   { name: "sword", power: 100 },
 ];
-let monsters = [
+const monsters = [
   {
     name: "slime",
     level: 2,
@@ -62,6 +62,12 @@ const locations = [
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters.",
   },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goTown],
+    text: "You are fighting a monster.",
+  },
 ];
 
 // initialize buttons
@@ -78,6 +84,7 @@ function update(location) {
   button3.onclick = location["button functions"][2];
   text.innerText = location.text;
 }
+
 function goTown() {
   update(locations[0]);
 }
@@ -90,10 +97,6 @@ function goCave() {
   update(locations[2]);
 }
 
-function fightDragon() {
-  console.log("Fighting dragon.");
-}
-
 function buyHealth() {
   if (gold >= 10) {
     gold -= 10;
@@ -104,6 +107,7 @@ function buyHealth() {
     text.innerText = "You do not have enough gold to buy health.";
   }
 }
+
 function buyWeapon() {
   if (currentWeapon < weapons.length - 1) {
     if (gold >= 30) {
@@ -136,15 +140,24 @@ function sellWeapon() {
   }
 }
 
-function buyWeapon() {}
-
-function fightSlime() {}
-
-function fightBeast() {}
-
 function fightSlime() {
   fighting = 0;
   goFight();
 }
 
-function goFight() {}
+function fightBeast() {
+  fighting = 1;
+  goFight();
+}
+
+function fightDragon() {
+  fighting = 2;
+  goFight();
+}
+function goFight() {
+  update(locations[3]);
+}
+
+function attack() {}
+
+function dodge() {}
